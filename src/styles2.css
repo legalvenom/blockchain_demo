@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #313339;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    color: #1ef702;
+}
+h2{
+    text-align: center;
+}
+#registration-heading {
+    color: #f45201;
+    text-align: center;
+}
+
+#details {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1f22;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(62, 149, 3, 0.1);
+}
+
+p {
+    margin-bottom: 10px;
+    color: white;
+}
+
+strong {
+    font-weight: bold;
+}
+

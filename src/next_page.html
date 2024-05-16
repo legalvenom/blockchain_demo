@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Registration - Success</title>
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        /* Additional CSS for timestamp and signature */
+        .details-box {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1f22;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(62, 149, 3, 0.1);
+            position: relative; /* Add position relative to position child elements absolutely */
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .timestamp {
+            position: absolute;
+            top: 55px;
+            right: 10px;
+        }
+
+        .signature {
+            position: absolute;
+            bottom: 20px; /* Adjusted to avoid overlap with timestamp */
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student successfully registered for examination</h1>
+    <h2 id="registration-heading">Registration Details</h2>
+    <div class="details-box" id="details">
+        <!-- Student details will be dynamically inserted here -->
+        <!-- Timestamp will be dynamically inserted here -->
+        <!-- Student Signature will be dynamically inserted here -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Connect to the blockchain
+        if (window.ethereum) {
+            window.web3 = new Web3(window.ethereum);
+            window.ethereum.enable().then(function() {
+                // Get contract instance
+                const contract = new web3.eth.Contract(abi, contractAddress);
+
+                // Get account
+                web3.eth.getAccounts().then(async function(accounts) {
+                    const account = accounts[0];
+
+                    // Get and display stored details
+                    const details = await contract.methods.getExamDetails(account).call();
+                    document.getElementById('details').innerHTML = `
+                        <h2> Examination Fee Receipt</h2>
+                        
+                        <p><strong>Name:</strong> ${details[0]}</p>
+                        <p><strong>USN:</strong> ${details[1]}</p>
+                        <p><strong>Exam Type:</strong> ${details[2]}</p>
+                        <p><strong>Payment Status:</strong> Fee Paid</p>
+                    `;
+                    displayTimestamp(); // Call function to display timestamp
+                    displaySignature(details[0]); // Call function to display signature with student name
+                });
+            });
+        } else {
+            console.log('No Ethereum provider detected. Install MetaMask.');
+        }
+
+        // Function to display current timestamp
+        function displayTimestamp() {
+            const now = new Date();
+            const timestamp = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+            document.getElementById('details').innerHTML += `<p class="timestamp">Date & Time: ${timestamp}</p>`;
+        }
+
+        // Function to display signature with student name
+        function displaySignature(studentName) {
+            document.getElementById('details').innerHTML += `<p class="signature">Student Signature: ${studentName}</p>`;
+        }
+    </script>
+</body>
+</html>

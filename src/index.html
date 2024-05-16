@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Registration</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <link rel="stylesheet" href="styles1.css">
+
+</head>
+<body>
+    <h1>Exam Registration</h1>
+    <form id="registrationForm">
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" required><br><br>
+        
+        <label for="usn">Student USN:</label>
+        <input type="text" id="usn" required><br><br>
+        
+        <label for="examType">Exam Name:</label>
+        <input type="text" id="examType" required><br><br>
+        
+        <label for="examFees">Pay Exam Fees (in ruppes):</label>
+        <input type="number" id="examFees" required><br><br>
+        
+        <button type="button" onclick="registerStudent()">Register</button>
+    </form>
+
+    <script src="app.js"></script>
+</body>
+</html>
