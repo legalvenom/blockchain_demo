@@ -3,7 +3,7 @@ body {
     background-color: #313339; /* Changed background color */
     margin: 0;
     padding: 0;
-     /* Added color for text */
+    color: white; /* Added color for text */
 }
 
 h1 {
@@ -11,9 +11,13 @@ h1 {
     color: white; /* Changed heading color */
 }
 
-form {
+.container {
     max-width: 400px;
     margin: 0 auto;
+    padding: 20px;
+}
+
+form {
     background-color: #5765f2;
     padding: 20px;
     border-radius: 5px;
@@ -23,7 +27,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #fff; /* Changed label color */
 }
 
 input[type="text"],
@@ -50,3 +54,26 @@ button:hover {
     background-color: #45a049;
 }
 
+/* Additional styles for student details */
+#studentDetails {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    color: #333; /* Changed text color for student details */
+}
+
+.detail {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.detail span {
+    font-weight: bold;
+}
+
+.detail-content {
+    color: #333;
+}
